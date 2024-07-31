@@ -1,4 +1,6 @@
-package org.example;
+package org.example.strategy;
+
+import org.example.StorageStrategy;
 
 public class Shortener {
     private Long lastId = 0L;

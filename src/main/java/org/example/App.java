@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.strategy.Shortener;
+
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Date;
