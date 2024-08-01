@@ -1,17 +1,25 @@
 package org.example;
 
-import org.example.strategy.OurHashBiMapStorageStrategy;
-import org.example.strategy.Shortener;
+import org.example.strategy.*;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Date;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
         long elementsNumber = 10000;
 
-        testStrategy(new OurHashBiMapStorageStrategy(), elementsNumber);
+        List<StorageStrategy> list = new ArrayList<>();
+
+        list.add(new OurHashMapStorageStrategy());
+        list.add(new OurHashBiMapStorageStrategy());
+        list.add(new DualHashBidiMapStorageStrategy());
+        list.add(new HashMapStorageStrategy());
+        list.add(new HashBiMapStorageStrategy());
+        list.add(new FileStorageStrategy());
+
+        for (StorageStrategy strategy : list) {
+            testStrategy(strategy, elementsNumber);
+        }
     }
 
     public static void testStrategy(StorageStrategy strategy, long elementsNumber) {
