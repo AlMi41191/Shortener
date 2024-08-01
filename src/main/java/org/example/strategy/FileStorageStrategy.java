@@ -40,6 +40,7 @@ public class FileStorageStrategy implements StorageStrategy {
         return null;
     }
 
+    @Override
     public void put(Long key, String value) {
         int hash = key.hashCode();
         int index = indexFor(hash, table.length);
@@ -86,6 +87,7 @@ public class FileStorageStrategy implements StorageStrategy {
         }
     }
 
+    @Override
     public boolean containsValue(String value) {
         for (FileBucket tableElement : table)
             for (Entry e = tableElement.getEntry(); e != null; e = e.next)
@@ -94,6 +96,7 @@ public class FileStorageStrategy implements StorageStrategy {
         return false;
     }
 
+    @Override
     public String getValue(Long key) {
         Entry entry = getEntry(key);
         if (entry != null)
@@ -102,10 +105,12 @@ public class FileStorageStrategy implements StorageStrategy {
         return null;
     }
 
+    @Override
     public boolean containsKey(Long key) {
         return getEntry(key) != null;
     }
 
+    @Override
     public Long getKey(String value) {
         for (FileBucket tableElement : table)
             for (Entry e = tableElement.getEntry(); e != null; e = e.next)

@@ -1,6 +1,8 @@
 package org.example.strategy;
 
-public class OurHashMapStorageStrategy {
+import org.example.StorageStrategy;
+
+public class OurHashMapStorageStrategy implements StorageStrategy {
     static final int DEFAULT_INITIAL_CAPACITY = 16;
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
@@ -32,6 +34,7 @@ public class OurHashMapStorageStrategy {
         return null;
     }
 
+    @Override
     public void put(Long key, String value) {
         int hash = hash(key);
         int index = indexFor(hash, table.length);
@@ -64,6 +67,7 @@ public class OurHashMapStorageStrategy {
         }
     }
 
+    @Override
     public boolean containsValue(String value) {
         for (Entry tableElement : table)
             for (Entry e = tableElement; e != null; e = e.next)
@@ -72,6 +76,7 @@ public class OurHashMapStorageStrategy {
         return false;
     }
 
+    @Override
     public String getValue(Long key) {
         Entry entry = getEntry(key);
         if (entry != null)
@@ -80,10 +85,12 @@ public class OurHashMapStorageStrategy {
         return null;
     }
 
+    @Override
     public boolean containsKey(Long key) {
         return getEntry(key) != null;
     }
 
+    @Override
     public Long getKey(String value) {
         for (Entry tableElement : table)
             for (Entry e = tableElement; e != null; e = e.next)
