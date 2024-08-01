@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.strategy.OurHashBiMapStorageStrategy;
 import org.example.strategy.Shortener;
 
 import java.util.Set;
