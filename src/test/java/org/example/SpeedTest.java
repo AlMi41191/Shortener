@@ -1,12 +1,10 @@
 package org.example;
 
-import org.example.strategy.*;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class SpeedTest {
     @Test
@@ -30,8 +28,8 @@ public class SpeedTest {
         long stringToIdTime2 = getTimeToGetIds(shortener2, origStrings, ids2);
         long idToStringTime2 = getTimeToGetStrings(shortener2, ids2, strings2);
 
-        Assertions.assertTrue(stringToIdTime1 > stringToIdTime2);
-        Assertions.assertEquals(idToStringTime1, idToStringTime2, 30);
+        Assert.assertTrue(stringToIdTime1 > stringToIdTime2);
+        Assert.assertEquals(idToStringTime1, idToStringTime2, 30);
     }
 
     public long getTimeToGetIds(Shortener shortener, Set<String> strings, Set<Long> ids) {
